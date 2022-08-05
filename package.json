@@ -1,0 +1,22 @@
+{
+  "name": "natours-project",
+  "version": "1.0.0",
+  "description": "Learning Node JS and MongoDB",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Solumba/natours-project.git"
+  },
+  "author": "Solomon Olumba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Solumba/natours-project/issues"
+  },
+  "homepage": "https://github.com/Solumba/natours-project#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
