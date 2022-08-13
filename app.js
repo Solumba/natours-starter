@@ -21,6 +21,7 @@ app.post('/api/v1/tours', (req, res) => {
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({
     id: newId,
+    tour: req.body,
   });
   console.log(newId);
 });
