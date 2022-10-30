@@ -1,5 +1,12 @@
 const express = require('express');
-const {getWelcomePage, getTours, addTour, getTour, updateTour, deleteTour } = require('./../controllers/tourController');
+const {
+  getWelcomePage,
+  getTours,
+  addTour,
+  getTour,
+  updateTour,
+  deleteTour,
+} = require('./../controllers/tourController');
 const router = express.Router();
 
 router.route('/').get(getWelcomePage);
