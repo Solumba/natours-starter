@@ -6,6 +6,31 @@ const tours = JSON.parse(
 );
 
 //route handlers
+exports.checkID = (req, res, next, val) => {
+  console.log(`The ID is: ${val}`);
+  if (req.params.id * 1 > tours.length) {
+    return res.status(404).json({
+      status: 'failed',
+      message: 'INVALID ID',
+    });
+  }
+  next();
+};
+exports.checkBody = (req, res, next) => {
+  if (req.body.name && req.body.price) {
+    console.log(req.body);
+    return res.status(200).json({
+      status: 'success',
+      message: 'body contains name and price',
+    });
+  } else {
+    res.status(400).json({
+      status: 'failed',
+    });
+  }
+  next();
+};
+
 exports.getWelcomePage = (req, res) => {
   res.status(200).send('<h1>Welcome page</h1>');
 };
@@ -32,7 +57,7 @@ exports.addTour = (req, res) => {
 
   //writing to the dummy DB - tours-simple.json
   fs.writeFile(
-    `${__dirname}/dev-data/data/tours-simple.json`,
+    `${__dirname}/../dev-data/data/tours-simple.json`,
     JSON.stringify(tours),
     (err) => {
       if (err) throw new Error(err.message);
@@ -47,6 +72,7 @@ exports.addTour = (req, res) => {
 };
 
 exports.getTour = (req, res) => {
+  console.log(req.params);
   const id = req.params.id * 1;
   const tour = tours.find((el) => {
     return el.id === id;
@@ -66,12 +92,6 @@ exports.getTour = (req, res) => {
 };
 
 exports.updateTour = (req, res) => {
-  if (req.params.id * 1 > tours.length) {
-    return res.status(404).json({
-      status: 'failed',
-      message: 'INVALID ID',
-    });
-  }
   res.status(200).json({
     status: 'success',
     data: {
@@ -81,12 +101,6 @@ exports.updateTour = (req, res) => {
 };
 
 exports.deleteTour = (req, res) => {
-  if (req.params.id * 1 > tours.length) {
-    return res.status(404).json({
-      status: 'failed',
-      message: 'INVALID ID',
-    });
-  }
   res.status(204).json({
     status: 'successful',
     data: null,

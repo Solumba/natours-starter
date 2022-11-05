@@ -8,9 +8,12 @@ const fs = require('fs');
 const app = express();
 
 //Middlewares
-app.use(morgan('dev'));
+console.log(process.env.NODE_ENV);
+if(process.env.NODE_ENV === "development") {app.use(morgan('dev'));}
 //use express.json() middleware to ensure the body is passed on to request
 app.use(express.json());
+
+app.use(express.static(`${__dirname}/public`));
 //use our middleware to pass time on our request
 app.use((req, res, next) => {
   //reqTime is a variable set on the request object
