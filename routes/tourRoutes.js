@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const express = require('express');
 const {
   getWelcomePage,
@@ -8,7 +9,7 @@ const {
   deleteTour,
   checkID,
   checkBody,
-} = require('./../controllers/tourController');
+} = require("../controllers/tourController");
 
 const router = express.Router();
 

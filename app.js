@@ -1,13 +1,14 @@
+/* eslint-disable prettier/prettier */
 const express = require('express');
 const morgan = require('morgan');
 const toursRouter = require('./routes/tourRoutes');
 const usersRouter = require('./routes/userRoutes');
-const fs = require('fs');
 
 //callin the express function to create a server we can listen on
 const app = express();
 
 //Middlewares
+// eslint-disable-next-line no-console
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -21,6 +22,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use((req, res, next) => {
   //reqTime is a variable set on the request object
   req.reqTime = new Date().toISOString();
+  // eslint-disable-next-line no-console
   console.log(req.reqTime);
   //call the next function to
   next();
