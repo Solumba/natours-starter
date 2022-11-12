@@ -6,18 +6,14 @@ const {
   addTour,
   getTour,
   updateTour,
-  deleteTour,
-  checkID,
-  checkBody,
+  deleteTour
 } = require("../controllers/tourController");
 
 const router = express.Router();
 
-router.param('id', checkID);
-
 router.route('/').get(getWelcomePage);
 
-router.route('/').get(getTours).post(checkBody, addTour);
+router.route('/').get(getTours).post(addTour);
 
 router.route('/:id').get(getTour).patch(updateTour).delete(deleteTour);
 
