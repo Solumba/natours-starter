@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
 const {
-  getWelcomePage,
   getTours,
   addTour,
   getTour,
@@ -10,8 +9,6 @@ const {
 } = require("../controllers/tourController");
 
 const router = express.Router();
-
-router.route('/').get(getWelcomePage);
 
 router.route('/').get(getTours).post(addTour);
 
